@@ -33,7 +33,7 @@ public class ProductController extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setBounds(100,50,600,600);
 		setVisible(true);
-		
+		setResizable(false);
 	}
 	
 	public void fullProduct() {
