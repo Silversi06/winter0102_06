@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import vending_machine.ProductDAO;
 import vending_machine.ProductVO;
@@ -14,14 +16,17 @@ public class ProductController extends JFrame{
 	
 	public static final int STOP =0;
 	ArrayList<ProductVO> productList;
+	
 
 	public ProductController() {
 		ProductView view = new ProductView();
 		fullProduct();
 		view.setProductList(productList);
 		//view.displayProducts();
-		JPanel panC= view.displayProducts();
+		JPanel panC= view.displayProducts(this);
+		JPanel panS = view.inputPurchase();
 		add(panC,"Center");
+		add(panS,"South");
 		
 		
 		setTitle("음료자판기");
@@ -33,8 +38,8 @@ public class ProductController extends JFrame{
 	
 	public void fullProduct() {
 		ProductDAO dao = new ProductDAO();
-		String[]names = {"사이다","콜라","비타500","티즐","초록매실","포도쥬스","데자와","비락식혜","오렌지쥬스"};
-		int [] prices = {700,900,900,2100,1600,1500,2200,1000,2000};
+		String[]names = {"데자와","비락식혜","비타500","사이다","오렌지주스","초록매실","콜라","티즐","포도쥬스"};
+		int [] prices = {2200,1000,700,1000,1500,1000,1000,2000,1500}; 
 		ProductVO vo = null;
 		productList = dao.select();
 		for (int i=0; i<names.length; i++) {
